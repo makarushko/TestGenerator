@@ -9,9 +9,9 @@ namespace TestGenerator
     {
         static void Main(string[] args)
         {
-            var pathToFolder = "C:\\Users\\Anna\\Downloads\\TestGenerator-master\\TestGenerator-master\\MainPart\\Files";
-            var pathToGenerated = @"C:\Users\Anna\Downloads\TestGenerator-master\TestGenerator-master\GeneratedTests\GeneratedFiles";
-            
+            var pathToFolder = "C:\\Users\\Anna\\RiderProjects\\TestGenerator\\MainPart\\Files";
+            var pathToGenerated = @"C:\Users\Anna\RiderProjects\TestGenerator\GeneratedTests\GeneratedFiles";
+
             if (!Directory.Exists(pathToFolder))
             {
                 Console.WriteLine($"Couldn't find directory {pathToFolder}");
@@ -28,7 +28,7 @@ namespace TestGenerator
                 where file.Substring(file.Length - 3) == ".cs"
                 select file;
 
-            Task task =  new Pipeline().Generate(files, pathToGenerated,new TestsGenerator());
+            Task task =  new Pipeline().Generate(files, pathToGenerated,new TestGeneratorLib.TestGenerator());
             task.Wait();
             //Thread.Sleep(2000);
             Console.WriteLine("end.");
