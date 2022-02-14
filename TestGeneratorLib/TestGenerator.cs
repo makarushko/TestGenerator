@@ -119,7 +119,17 @@ namespace TestGeneratorLib
             return res;
         }
 
-       
+        private static string ConvertParametersToStringRepresentation(Dictionary<string, string> parameters)
+        {
+            var s = "";
+            foreach (var pair in parameters)
+            {
+                s += pair.Value[0] == 'I' ? $"_{pair.Key}.Object" : $"{pair.Key}";
+                s += ", ";
+            }
+
+            return s.Length > 0 ? s.Remove(s.Length - 2, 2) : "";
+        }
 
         private static string GetClassVariableName(string className)
         {
